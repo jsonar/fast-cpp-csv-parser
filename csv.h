@@ -460,7 +460,10 @@ namespace io{
                         }
 
                         int line_end = data_begin;
-                        while(buffer[line_end] != '\n' && line_end != data_end){
+                        bool inside_quotes = false;
+                        while((buffer[line_end] != '\n' || inside_quotes) && line_end != data_end){
+                                if (buffer[line_end] == '"')
+                                        inside_quotes = !inside_quotes;
                                 ++line_end;
                         }
 
