@@ -856,6 +856,7 @@ namespace io{
                 void parse_line(
                         char*line,
                         char**sorted_col,
+                        char**sorted_end,
                         const std::vector<int>&col_order
                 ){
                         for(std::size_t i=0; i<col_order.size(); ++i){
@@ -869,6 +870,7 @@ namespace io{
                                         quote_policy::unescape(col_begin, col_end);
                                                                
                                         sorted_col[col_order[i]] = col_begin;
+                                        sorted_end[col_order[i]] = col_end;
                                 }
                         }
                         if(line != nullptr)
